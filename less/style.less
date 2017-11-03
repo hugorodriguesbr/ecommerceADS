@@ -1,0 +1,149 @@
+@vermelho: red;
+@azul: blue;
+@preto: black;
+
+@largura: 1px;
+@tipoborda: solid;
+
+@total: 100%;
+@espacos: 10px;
+@espacos5: 5%;
+
+@pimeiraLetraUper: capitalize;
+@italico: oblique;
+@centro: center;
+
+body{
+	margin: 0 2%;
+}
+
+/* Mixin */
+.border-radius (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	
+}
+
+.textoCentro{
+	text-align: @centro;
+}
+
+.textoVermelho{
+	color: @vermelho;
+}
+
+.bordaCustom(@espess: @largura, @tipo: @tipoborda ,@corB: @vermelho){
+	border:@espess @tipo @corB;
+}
+
+/* Mixin */
+.border-radius-custom (@topleft: 5px, @topright: 5px, @bottomleft: 5px, @bottomright: 5px) {
+	-webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+	-moz-border-radius: @topleft @topright @bottomright @bottomleft;
+	border-radius: @topleft @topright @bottomright @bottomleft;
+	.bordaCustom(@largura, @tipoborda, @azul);
+	color: @azul;
+}
+
+.border-sombra-custom(){
+	-webkit-box-shadow: rgba(0,0,0,0.8) 0px 0px 10px;
+    -moz-box-shadow: rgba(0,0,0,0.8) 0px 0px 10px;
+    box-shadow: rgba(0,0,0,0.8) 0px 0px 8px;
+}
+
+#bordaarredondada {
+	.border-radius-custom(10px, 10px, 10px, 10px);
+	height: @total;
+	padding: @espacos*2 @espacos;
+	.border-sombra-custom;
+} 
+
+
+#idFloat{
+	float: left;
+}
+
+.imagem img{
+	width: @espacos*18;
+	height: @espacos*18;
+	/*.bordaCustom(@largura, @tipoborda, @preto);*/
+}
+
+
+.limpa{
+	clear: both;
+}
+
+/* Recursivo */
+.gerar-titulo(4);
+
+.gerar-titulo(@n, @i: 1) when (@i =< @n) {
+  
+  .titulo@{i} {
+  	font-size: ((1 + @n - @i) * 100%);
+  }
+
+  .descricao@{i} {
+  	font-size: ((1 + @n - @i) * 50%);
+  }
+
+  .gerar-titulo(@n, (@i + 1));
+}
+
+.nomeprd{
+	text-align: center;
+	text-transform: @pimeiraLetraUper;
+	font-style: @italico;
+	/*.bordaCustom();*/
+}
+
+.descriProd{
+	text-align: center;
+	/*.bordaCustom(); */
+}
+
+.listaGrande{
+	#idFloat;
+	margin-left: @espacos*2;
+	margin-top: @espacos*2;
+}
+
+.listaMedia{
+	#idFloat;
+	margin-left: @espacos;
+	margin-top: @espacos;
+}
+
+.boxStatic{
+	.titulo4;
+	/*.bordaCustom();*/
+	position:absolute;
+	top: @espacos + 8;
+	right: 2%;
+	padding: 0.2%;
+	width: 18%;
+	color: black; 
+}
+
+.imagemIconeEsquerda{
+	float: left;
+	margin-right: 1%;
+	width: @espacos*4;
+	height: @espacos*4;
+	.bordaCustom(@largura, @tipoborda, @preto);
+}
+
+.listaMedia .imagemIconeEsquerda{
+	width: @espacos*3;
+	height: @espacos*3;	
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
