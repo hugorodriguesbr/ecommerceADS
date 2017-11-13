@@ -43,7 +43,7 @@ body{
 	-moz-border-radius: @topleft @topright @bottomright @bottomleft;
 	border-radius: @topleft @topright @bottomright @bottomleft;
 	.bordaCustom(@largura, @tipoborda, @azul);
-	color: @azul;
+	//color: @azul;
 }
 
 .border-sombra-custom(){
@@ -67,6 +67,19 @@ body{
 .imagem img{
 	width: @espacos*18;
 	height: @espacos*18;
+	/*.bordaCustom(@largura, @tipoborda, @preto);*/
+}
+
+.imagempequena img{
+	width: @espacos*10;
+	height: @espacos*10;
+	/*.bordaCustom(@largura, @tipoborda, @preto);*/
+}
+
+.imgmaior img{
+	margin: auto 20%;
+	width: @espacos*20;
+	height: @espacos*20;
 	/*.bordaCustom(@largura, @tipoborda, @preto);*/
 }
 

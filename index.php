@@ -1,5 +1,10 @@
 <?php
+     session_start();
     include "conexao.php";
+
+
+	if(isset($_SESSION['user']))
+		$nomeuser = $_SESSION['user'];
 
     //selecionar produtos
     $sqlProd = mysqli_query($conn,'Select * from produtos');
@@ -26,9 +31,11 @@
 			<div class='titulo1'>Power Compras</div>
 			<div class='descricao1'>E-commerce feito para você.</div>
 			<div class='boxStatic'>
-				<div class='imagemIconeEsquerda'>  <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </div>
-				<div class='titulo4'>Carrinho de Compras</div>
-				<div class='descricao4'><span class='textoVermelho'>10</span> produtos no carrinho</div>
+				<a href='adm/pedido/index.php'>
+					<div class='imagemIconeEsquerda'>  <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </div>
+					<div class='titulo4'>Carrinho de Compras</div>
+					<div class='descricao4'><span class='textoVermelho'>10</span> produtos no carrinho</div>
+				</a>
 			</div> 
 			<hr>
 			<?php 
@@ -36,7 +43,7 @@
 			?>
 				<div class='listaGrande'>
 					<div id="bordaarredondada">
-						<a href="produto.html?id=1">
+						<a href="produto.php?id=<?php echo $prd->id ?>">
 				            <div class='imagem'> <img src='img/<?php echo $prd->foto ?>' title=''> </div>
 				            <div class='nomeprd'> <?php echo $prd->nome ?> </div>
 				            <div class='nomeprd'> <?php echo $prd->descricao ?> </div>
