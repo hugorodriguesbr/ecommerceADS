@@ -1,8 +1,21 @@
 <?php
+  session_start();
   $produto = array('');
+
+  unset($_SESSION['cliente']);
 
   if(isset($_POST['btn_comprar'])){
       /* TODO  SALVAR PEDIDO */
+
+      //var_dump($_POST);
+      /*verificar se está logado*/
+      if(isset($_SESSION['cliente'])){
+        /*Vou criar a sessao com o produto selecionado*/
+      }else{
+        unset($_POST['btn_comprar']);
+        $_SESSION['pedido'] = array($_POST);
+        header('Location: adm/pedido/index.php');
+      }
   }
 
 
@@ -53,6 +66,8 @@
       <div>
     <!-- form comprar -->
     <form name='comprar' action='' method='POST' >
+      <input type='hidden' name='idproduto' value='<?php echo $produto->id ?>'> 
+      <input type='hidden' name='valor' value='<?php echo $produto->valor ?>'> 
       <div class="row">
          <div class="col-7">
             <div class='imgmaior'>
@@ -75,6 +90,11 @@
                         <option value='3'>3</option>
                         <option value='4'>4</option>
                     </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                   <?php echo 'R$ ' . $produto->valor ?>
                 </div>
             </div>
              <div class="row">

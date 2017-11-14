@@ -21,7 +21,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Pediso Cliente</title>
+		<title>Pedido Cliente</title>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 		<!-- Fontss -->
@@ -35,6 +35,7 @@
 	</head>
 	<body>
 		<?php 
+		    //se o cliente tem sessão
 			if(isset($_SESSION['cliente'])) {
 		?>
 		<h1>Pedidos</h1>
@@ -51,6 +52,18 @@
 
 		<div>
 			Meus Pedidos
+			<?php 
+			  // Loop para mostrar os produtos do carrinho
+			  foreach ($_SESSION['pedido'] as $key => $value) {
+		    ?>
+				<div>
+					idproduto:  <?php echo $value['idproduto'] ?> <br>
+					quantidade:  <?php echo $value['quantidade'] ?> <br>
+				    valor:  <?php echo $value['valor'] ?> <br>
+				</div>
+			<?php
+			  }
+			?>
 		</div>
 		<?php
 		  }
